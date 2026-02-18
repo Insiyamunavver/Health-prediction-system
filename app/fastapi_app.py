@@ -1,21 +1,29 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import Response
 from pydantic import BaseModel
+from prometheus_client import Counter, Histogram, generate_latest
+
 import joblib
 import pandas as pd
 import os
 
-from prometheus_client import Counter, Histogram, generate_latest
-from fastapi.responses import Response
-
 # 🚀 Create FastAPI app
 app = FastAPI(title="Healthcare Disease Prediction API")
 
-# 📦 Load trained pipeline
+# 📦 Model path
+MODEL_PATH = "model.joblib"
 
-print("Loading model from:", os.path.abspath("model.joblib"))
+print("Loading model from:", os.path.abspath(MODEL_PATH))
 
-model = joblib.load("model.joblib")
-print(model)
+model = None
+
+# ✅ Safe model loading (CI/CD friendly)
+if os.path.exists(MODEL_PATH):
+    print(f"✅ Model found. Loading {MODEL_PATH}")
+    model = joblib.load(MODEL_PATH)
+    print("✅ Model loaded successfully")
+else:
+    print("⚠ model.joblib NOT found (running in test/CI mode)")
 
 
 # 📊 Prometheus Metrics
@@ -47,6 +55,13 @@ def health():
 def predict(data: PatientData):
 
     REQUEST_COUNT.inc()
+
+    # ❗ Protect against missing model
+    if model is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Model not loaded"
+        )
 
     with REQUEST_LATENCY.time():
 
