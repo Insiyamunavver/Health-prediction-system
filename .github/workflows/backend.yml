@@ -23,10 +23,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # ✅ IMPORTANT FIX → allow imports like "from app.fastapi_app import app"
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:." >> $GITHUB_ENV
+
       - name: Run flake8
-        run: |
-          flake8 .
+        run: flake8 .
 
       - name: Run pytest
-        run: |
-          pytest
+        run: pytest
