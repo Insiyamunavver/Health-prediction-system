@@ -1,7 +1,18 @@
+import pytest
 from fastapi.testclient import TestClient
+from unittest.mock import patch
+
 from app.fastapi_app import app
 
 client = TestClient(app)
+
+
+# ✅ Fixture to mock ML model
+@pytest.fixture
+def mock_model():
+    with patch("app.fastapi_app.model") as mock:
+        mock.predict.return_value = ["TestDisease"]
+        yield mock
 
 
 # ✅ 1. Health endpoint
@@ -12,7 +23,7 @@ def test_health_check():
 
 
 # ✅ 2. Valid prediction
-def test_valid_prediction():
+def test_valid_prediction(mock_model):
     payload = {
         "age": 45,
         "gender": "MALE",
@@ -27,7 +38,7 @@ def test_valid_prediction():
 
 
 # ✅ 3. Invalid gender category
-def test_invalid_gender_category():
+def test_invalid_gender_category(mock_model):
     payload = {
         "age": 30,
         "gender": "unknown",
@@ -37,7 +48,6 @@ def test_invalid_gender_category():
 
     response = client.post("/predict", json=payload)
 
-    # Your API currently allows unknown gender → returns prediction
     assert response.status_code == 200
     assert "prediction" in response.json()
 
