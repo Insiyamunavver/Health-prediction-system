@@ -57,7 +57,7 @@ if st.button("🔍 Predict", use_container_width=True):
         with st.spinner("🤖 Analyzing symptoms..."):
 
             response = requests.post(
-                "https://health-prediction-system-j3rs.onrender.com",
+                "https://health-prediction-system-j3rs.onrender.com/predict",
                 json=payload,
                 timeout=5,
             )
