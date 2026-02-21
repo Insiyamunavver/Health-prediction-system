@@ -1,0 +1,34 @@
+C:\Users\Taha\OneDrive\Desktop\ML_project\src\data_loader.py:15: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(query, conn)
+
+🔍 Hyperparameter Tuning Started...
+
+🚀 Tuning LogisticRegression...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+C:\Users\Taha\OneDrive\Desktop\ML_project\myenv\Lib\site-packages\sklearn\metrics\_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+Best Params: {'model__max_iter': 500, 'model__C': 0.01}
+Accuracy: 0.0358
+F1 Score: 0.0215
+----------------------------------------
+🚀 Tuning RandomForest...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+Best Params: {'model__n_estimators': 100, 'model__max_depth': 10}
+Accuracy: 0.0334
+F1 Score: 0.0290
+----------------------------------------
+🚀 Tuning GradientBoosting...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+C:\Users\Taha\OneDrive\Desktop\ML_project\myenv\Lib\site-packages\sklearn\metrics\_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+Best Params: {'model__n_estimators': 50, 'model__learning_rate': 0.01}
+Accuracy: 0.0394
+F1 Score: 0.0192
+----------------------------------------
+
+🏆 Best Tuned Model: RandomForest
+Best F1 Score: 0.0290
+
+✅ Best tuned model saved & logged to W&B!
+
+✅ Best pipeline, preprocessor, and model saved!

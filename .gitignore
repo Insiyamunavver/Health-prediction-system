@@ -1,20 +1,16 @@
-# 🔴 Virtual environment
+# Virtual environments
 myenv/
+.venv/
 
-# 🔴 Python cache
+# Python cache
 __pycache__/
 *.pyc
+
+# Pytest cache
 .pytest_cache/
 
-# 🔴 Model artifacts
-*.joblib
-*.pkl
-
-# 🔴 Logs / reports
+# Logs / reports
 *.txt
-wandb/
 
-# 🔴 OS / IDE
-.DS_Store
+# OS / Editor
 .vscode/
-dataset

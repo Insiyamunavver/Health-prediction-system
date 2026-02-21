@@ -1,0 +1,24 @@
+{
+  "os": "Windows-11-10.0.26100-SP0",
+  "python": "CPython 3.12.1",
+  "startedAt": "2026-02-15T07:34:05.216910Z",
+  "program": "C:\\Users\\Taha\\OneDrive\\Desktop\\ML_project\\src\\tune_model.py",
+  "codePath": "src\\tune_model.py",
+  "codePathLocal": "src\\tune_model.py",
+  "email": "insiya.munawer@gmail.com",
+  "root": "C:\\Users\\Taha\\OneDrive\\Desktop\\ML_project",
+  "host": "DESKTOP-2UAHE1E",
+  "executable": "C:\\Users\\Taha\\OneDrive\\Desktop\\ML_project\\myenv\\Scripts\\python.exe",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "235408453632",
+      "used": "223173885952"
+    }
+  },
+  "memory": {
+    "total": "8303452160"
+  },
+  "writerId": "6x4hfghj8uzln53g29ypf71pt34eqolb"
+}

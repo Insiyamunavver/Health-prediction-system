@@ -10,10 +10,12 @@ import os
 # 🚀 Create FastAPI app
 app = FastAPI(title="Healthcare Disease Prediction API")
 
-# 📦 Model path
-MODEL_PATH = "model.joblib"
+# 📦 Build correct path to models folder
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-print("Loading model from:", os.path.abspath(MODEL_PATH))
+MODEL_PATH = os.path.join(BASE_DIR, "..", "models", "model.joblib")
+
+print("Loading model from:", MODEL_PATH)
 
 model = None
 
