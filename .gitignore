@@ -10,7 +10,7 @@ __pycache__/
 .pytest_cache/
 
 # Logs / reports
-*.txt
+#*.txt
 
 # OS / Editor
 .vscode/
