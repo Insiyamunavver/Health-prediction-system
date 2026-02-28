@@ -53,7 +53,7 @@ symptoms = st.text_area(
     "Symptoms (comma separated)",
     placeholder="e.g. chest pain, dizziness, fatigue",
     height=120,
-)   
+)
 # ---------------- BUTTON ----------------
 if st.button("Run Clinical Analysis"):
 
