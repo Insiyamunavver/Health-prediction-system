@@ -11,16 +11,22 @@ st.set_page_config(
 
 # ---------------- HEADING ----------------
 st.markdown(
-    "<h1 style='text-align:center; font-size:44px; font-weight:800;'>🏥 Health Dashboard</h1>",
-    unsafe_allow_html=True
+    (
+        "<h1 style='text-align:center; font-size:44px; "
+        "font-weight:800;'>🏥 Health Dashboard</h1>"
+    ),
+    unsafe_allow_html=True,
 )
 
 st.markdown("---")
 
 # ---------------- SECTION TITLE ----------------
 st.markdown(
-    "<h2 style='font-size:26px; font-weight:700;'>🩺 Patient Clinical Information</h2>",
-    unsafe_allow_html=True
+    (
+        "<h2 style='font-size:26px; font-weight:700;'>"
+        "🩺 Patient Clinical Information</h2>"
+    ),
+    unsafe_allow_html=True,
 )
 
 # Row 1 - Name
@@ -36,19 +42,20 @@ with col2:
     gender = st.selectbox("Gender", ["Male", "Female"])
 
 with col3:
-    symptom_count = st.number_input("Symptom Count", min_value=0, step=1)
+    symptom_count = st.number_input(
+        "Symptom Count",
+        min_value=0,
+        step=1,
+    )
 
 # Symptoms
 symptoms = st.text_area(
     "Symptoms (comma separated)",
     placeholder="e.g. chest pain, dizziness, fatigue",
-    height=120
-)
-
-st.markdown("")
-
+    height=120,
+)   
 # ---------------- BUTTON ----------------
-if st.button("Run Clinical Analysis", use_container_width=True):
+if st.button("Run Clinical Analysis"):
 
     if not patient_name.strip():
         st.warning("Please enter patient name.")
@@ -72,7 +79,10 @@ if st.button("Run Clinical Analysis", use_container_width=True):
 
     try:
         response = requests.post(
-            "https://health-prediction-system-j3rs.onrender.com/predict",
+            (
+                "https://health-prediction-system-j3rs."
+                "onrender.com/predict"
+            ),
             json=payload,
             timeout=10,
         )
@@ -90,5 +100,6 @@ if st.button("Run Clinical Analysis", use_container_width=True):
         else:
             st.error("API Error")
 
-    except:
+    except requests.exceptions.RequestException:
         st.error("Backend connection failed")
+        
