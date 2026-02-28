@@ -102,4 +102,3 @@ if st.button("Run Clinical Analysis"):
 
     except requests.exceptions.RequestException:
         st.error("Backend connection failed")
-        
